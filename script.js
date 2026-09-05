@@ -375,13 +375,13 @@ function initEmailCopy() {
   copyBtn.addEventListener('click', () => {
     const email = emailText.textContent.trim();
     navigator.clipboard.writeText(email).then(() => {
-      showToast('Copied simondavid.cs@gmail.com to clipboard!');
+      showToast('Copied menosimon6@gmail.com to clipboard!');
       copyBtn.querySelector('.copy-text').textContent = 'Copied!';
       setTimeout(() => {
         copyBtn.querySelector('.copy-text').textContent = 'Copy';
       }, 2500);
     }).catch(() => {
-      showToast('Email: simondavid.cs@gmail.com');
+      showToast('Email: menosimon6@gmail.com');
     });
   });
 }
@@ -416,7 +416,7 @@ function initContactForm() {
     submitBtn.disabled = true;
 
     setTimeout(() => {
-      status.innerHTML = '<span style="color: #4ade80; font-weight: 500;">✓ Message sent! Simon will get back to you shortly.</span>';
+      status.innerHTML = '<span style="color: #4ade80; font-weight: 500;">✓ Message sent! Simon will get back to you shortly at menosimon6@gmail.com.</span>';
       submitBtn.textContent = 'Message Sent';
 
       // Reset form fields
@@ -438,47 +438,80 @@ function initContactForm() {
    ========================================================================== */
 window.downloadResume = function () {
   const resumeText = `
-SIMON DAVID
-Computer Scientist & Software Engineer
-Email: simondavid.cs@gmail.com | GitHub: github.com/simondavid | LinkedIn: linkedin.com/in/simondavid
+MENOH SIMON DAVID
+Computer Science Graduate | Computer Engineer
+Email: menosimon6@gmail.com | Phone: 656-872-040 | Location: Yaoundé, CM
+LinkedIn: https://www.linkedin.com/in/simon-david-menoh-29662a308
+GitHub: https://github.com/menohsimon
 
---------------------------------------------------------------------------------
-PROFESSIONAL SUMMARY
-Results-driven Computer Scientist with a strong foundation in computational algorithms,
-systems programming, and full-stack software development. Proven track record of architecting
-performant, scalable solutions with an emphasis on code quality, mathematical rigor, and engineering excellence.
+================================================================================
+SUMMARY
+================================================================================
+Computer Science graduate with practical experience in full-stack web development,
+database management, and software engineering. Passionate about Artificial Intelligence,
+Data Analytics, and building technology solutions that solve real-world problems.
+Quick learner, collaborative team member, and eager to contribute to innovative organizations.
 
---------------------------------------------------------------------------------
+================================================================================
+SKILLS & COMPETENCIES
+================================================================================
+- Technical Stack: React, Python, Convex, JavaScript (ES6+), CSS3, HTML5, Tailwind CSS, Relational Databases, SQL, Git & GitHub
+- Professional Skills: Team Collaboration, Problem Solving, Communication, Time Management, Adaptability, Analytical Thinking
+- Additional Skills: Driving, Social Media Management, Graphic Design
+- Languages: English (Full Professional), French (Native or Bilingual)
+
+================================================================================
+ACCOMPLISHMENTS & EXPERIENCE
+================================================================================
+OLA ENERGY CAMEROON — Internship
+Duration: 14/07/2025 - 26/08/2025
+• Worked well in a team setting, providing support and guidance.
+• Passionate about learning and committed to continual improvement.
+• Participated in team projects, demonstrating an ability to work collaboratively and effectively.
+• Adaptable and proficient in learning new concepts quickly and efficiently.
+
+================================================================================
+FEATURED PROJECT
+================================================================================
+LogiTrack – Smart Logistics Marketplace & Real-Time Tracking
+The ICT University - Final Year Project Defense (04/07/2026)
+Live Demo: https://logitrack-rust.vercel.app/
+Source Code: https://github.com/menohsimon/logitrack
+• Developed a logistics platform connecting customers with transport providers.
+• Implemented real-time shipment tracking using interactive maps.
+• Built booking and company management features.
+• Designed relational databases for logistics operations.
+• Focused on improving transparency and logistics efficiency.
+
+================================================================================
 EDUCATION
-Bachelor of Science in Computer Science (2021 – 2025)
-Coursework: Advanced Data Structures, Operating Systems, Algorithm Analysis, Distributed Systems,
-Computer Networks, Database Architecture, Machine Learning, Computational Theory.
+================================================================================
+THE ICT UNIVERSITY, Yaoundé
+Completed: July/2026
+• Completed coursework: Bachelor of Science in Computer Science
 
---------------------------------------------------------------------------------
-TECHNICAL EXPERTISE
-- Languages: Python, Java, C++, TypeScript, JavaScript, SQL, Go
-- Frameworks & Tools: React, Node.js, Express, PyTorch, Docker, Git, Linux/Unix
-- Core Competencies: Algorithmic Optimization, API Architecture, CI/CD, Distributed Systems
+THE ICT UNIVERSITY / COURSERA
+Duration: October/2024 - May/2025
+• Certificate in Database Management
 
---------------------------------------------------------------------------------
-KEY PROJECTS
-- Aether Task Mesh (Distributed Orchestration System)
-  Engineered distributed job broker with Raft replication, achieving 99.99% uptime and sub-15ms scheduling latency.
-- NeuralVision Core (Real-Time Inference Platform)
-  Implemented optimized computer vision pipeline utilizing GPU acceleration to process 60+ FPS concurrent camera streams.
-- GraphTrace Visualizer (Algorithm Analysis Workbench)
-  Built interactive WebAssembly-powered platform for simulating, profiling, and benchmarking graph routing algorithms.
+Douala Academy of Arts and Science, Douala
+Completed: September/2021
+• Completed Coursework: GCE ADVANCED LEVEL
+
+Fultang Bilingual School, Nkongsamba
+Completed: September/2019
+• Completed Coursework: GCE ORDINARY LEVEL
 `;
 
   const blob = new Blob([resumeText], { type: 'text/plain;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'Simon_David_Computer_Scientist_Resume.txt';
+  a.download = 'Menoh_Simon_David_Resume.txt';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 
-  showToast('Downloaded Simon David Resume!');
+  showToast('Downloaded Menoh Simon David Resume!');
 };

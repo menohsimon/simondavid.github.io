@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simon David — Computer Scientist & Creative Technologist</title>
+  <meta name="description" content="Portfolio of Simon David, Computer Scientist and Creative Technologist specializing in Algorithms, AI/ML, and High-Performance Software Architecture.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Floating Background Particles -->
+  <canvas id="ambientCanvas" class="ambient-canvas"></canvas>
+
+  <!-- Main Viewport / Centered Portfolio Card -->
+  <main class="portfolio-container">
+    <div class="portfolio-card" id="portfolioCard">
+      
+      <!-- Ambient Top-Left Corner Glow -->
+      <div class="corner-glow" aria-hidden="true"></div>
+
+      <!-- Top Navigation Bar -->
+      <header class="card-navbar">
+        <div class="brand-logo">
+          <a href="#" class="brand-link" id="brandLogo">
+            <span class="logo-text">Simon</span>
+            <span class="logo-dot">.</span>
+          </a>
+        </div>
+
+        <nav class="nav-links" aria-label="Main Navigation">
+          <button type="button" class="nav-btn" id="navAboutBtn" data-modal="aboutModal">About Us</button>
+          <button type="button" class="nav-btn" id="navProjectsBtn" data-modal="projectsModal">Projects</button>
+          <button type="button" class="nav-btn" id="navContactBtn" data-modal="contactModal">Contact</button>
+        </nav>
+      </header>
+
+      <!-- Main Hero Stage -->
+      <section class="card-hero" aria-label="Introduction">
+        
+        <!-- Left Column: Name & Greeting -->
+        <div class="hero-left">
+          <div class="greeting-wrapper">
+            <span class="greeting-subtitle">Hello, I'm</span>
+          </div>
+          <h1 class="hero-name">
+            <span class="name-line">Simon</span>
+            <span class="name-line">David</span>
+          </h1>
+          <div class="hero-tags">
+            <span class="tag-pill">AI & ML</span>
+            <span class="tag-pill">Algorithms</span>
+            <span class="tag-pill">Systems</span>
+          </div>
+        </div>
+
+        <!-- Center Column: Simon's Portrait with Violet Halo -->
+        <div class="hero-center">
+          <div class="portrait-stage" id="portraitStage">
+            <!-- Radiant Violet Radial Glow Behind Portrait -->
+            <div class="violet-halo" aria-hidden="true"></div>
+            
+            <!-- Simon David's Transparent Cutout Portrait -->
+            <img src="simon-cutout.png" alt="Simon David — Computer Scientist" class="portrait-img" id="portraitImg" width="768" height="1024" loading="eager">
+            
+            <!-- Bottom Seamless Dark Blend Overlay -->
+            <div class="portrait-bottom-mask" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- Right Column: Creative Computer Scientist Title -->
+        <div class="hero-right">
+          <div class="role-wrapper">
+            <span class="role-prefix">Creative</span>
+            <h2 class="role-headline">
+              <span class="role-gradient">Computer</span>
+              <span class="role-white">& Scientist</span>
+            </h2>
+            <p class="role-description">
+              Engineering high-performance software, scalable algorithms, and intelligent systems.
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Bottom Bar: Social Icons on Left, Resume on Right -->
+      <footer class="card-footer">
+        
+        <!-- Bottom-Left: LinkedIn & GitHub Only -->
+        <div class="social-links-vertical" aria-label="Social Profiles">
+          <!-- LinkedIn Link -->
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" id="linkedinBtn" aria-label="Simon David's LinkedIn Profile">
+            <svg class="social-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+            <span class="tooltip">LinkedIn</span>
+          </a>
+
+          <!-- GitHub Link -->
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" id="githubBtn" aria-label="Simon David's GitHub Profile">
+            <svg class="social-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+            <span class="tooltip">GitHub</span>
+          </a>
+        </div>
+
+        <!-- Bottom-Right: Resume Button with External Box Icon -->
+        <div class="resume-wrapper">
+          <button type="button" class="resume-btn" id="resumeBtn" data-modal="resumeModal" aria-label="Open Resume Preview">
+            <span class="resume-text">RESUME</span>
+            <span class="resume-icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="9" y1="15" x2="15" y2="9"></line>
+                <polyline points="10 9 15 9 15 14"></polyline>
+              </svg>
+            </span>
+          </button>
+        </div>
+
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- ==================== INTERACTIVE MODALS ==================== -->
+
+  <!-- 1. ABOUT MODAL -->
+  <dialog id="aboutModal" class="glass-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-badge">Biography & Competencies</span>
+          <h3 class="modal-title">About Simon David</h3>
+        </div>
+        <button type="button" class="modal-close-btn" data-close="aboutModal" aria-label="Close modal">&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        <p class="modal-lead">
+          I am a <strong>Computer Scientist</strong> committed to solving computationally intensive challenges, developing robust backend architectures, and researching applied Machine Learning algorithms.
+        </p>
+
+        <div class="modal-grid">
+          <div class="info-card">
+            <h4>Core Disciplines</h4>
+            <ul>
+              <li>Data Structures & Algorithmic Optimization</li>
+              <li>Distributed Systems & Cloud Computing</li>
+              <li>Deep Learning & Computer Vision</li>
+              <li>Full-Stack Web Architecture</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h4>Technical Stack</h4>
+            <div class="skills-badges">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">C++</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">PyTorch</span>
+              <span class="skill-tag">Git</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="education-block">
+          <h4>Academic Background</h4>
+          <div class="edu-item">
+            <div class="edu-title">Bachelor of Science in Computer Science</div>
+            <div class="edu-sub">Focused on Computational Theory, Software Engineering, and AI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- 2. PROJECTS MODAL -->
+  <dialog id="projectsModal" class="glass-modal">
+    <div class="modal-content modal-large">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-badge">Featured Work</span>
+          <h3 class="modal-title">Selected Projects</h3>
+        </div>
+        <button type="button" class="modal-close-btn" data-close="projectsModal" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="projects-grid">
+          
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="project-header">
+              <span class="project-tag">AI & Vision</span>
+              <span class="project-year">2026</span>
+            </div>
+            <h4 class="project-title">NeuralVision Core</h4>
+            <p class="project-desc">
+              Real-time multi-object detection and segmentation engine operating on high-throughput video streams using TensorRT acceleration.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>PyTorch</span>
+              <span>CUDA</span>
+              <span>OpenCV</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="proj-link">Source Code ↗</a>
+              <a href="#" class="proj-link demo-link">View Architecture ↗</a>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="project-header">
+              <span class="project-tag">Distributed Systems</span>
+              <span class="project-year">2025</span>
+            </div>
+            <h4 class="project-title">Aether Task Mesh</h4>
+            <p class="project-desc">
+              Fault-tolerant distributed job orchestration system with Raft consensus, dynamic worker autoscaling, and zero-downtime failover.
+            </p>
+            <div class="project-tech">
+              <span>Go</span>
+              <span>gRPC</span>
+              <span>Docker</span>
+              <span>Redis</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="proj-link">Source Code ↗</a>
+              <a href="#" class="proj-link demo-link">Benchmark Report ↗</a>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div class="project-header">
+              <span class="project-tag">Web & Cloud</span>
+              <span class="project-year">2025</span>
+            </div>
+            <h4 class="project-title">GraphTrace Visualizer</h4>
+            <p class="project-desc">
+              Interactive WebAssembly-powered platform for simulating, profiling, and benchmarking graph routing algorithms in real time.
+            </p>
+            <div class="project-tech">
+              <span>TypeScript</span>
+              <span>Rust / Wasm</span>
+              <span>WebGL</span>
+              <span>Tailwind</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="proj-link">Source Code ↗</a>
+              <a href="#" class="proj-link demo-link">Live Platform ↗</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- 3. CONTACT MODAL -->
+  <dialog id="contactModal" class="glass-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-badge">Get in Touch</span>
+          <h3 class="modal-title">Contact Simon David</h3>
+        </div>
+        <button type="button" class="modal-close-btn" data-close="contactModal" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="modal-lead">
+          Interested in discussing a software project, research collaboration, or engineering role? Feel free to reach out directly.
+        </p>
+
+        <!-- Quick Copy Email Box -->
+        <div class="email-copy-box">
+          <div class="email-info">
+            <span class="email-label">Direct Email</span>
+            <span class="email-value" id="emailText">simondavid.cs@gmail.com</span>
+          </div>
+          <button type="button" class="copy-email-btn" id="copyEmailBtn" aria-label="Copy email address to clipboard">
+            <span class="copy-text">Copy</span>
+            <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Contact Form -->
+        <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); submitContactForm();">
+          <div class="form-group">
+            <label for="contactName">Your Name</label>
+            <input type="text" id="contactName" required placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Your Email</label>
+            <input type="email" id="contactEmail" required placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label for="contactMsg">Message</label>
+            <textarea id="contactMsg" rows="3" required placeholder="Hello Simon, I'd like to talk about..."></textarea>
+          </div>
+          <button type="submit" class="submit-btn" id="submitFormBtn">Send Message</button>
+          <div class="form-status" id="formStatus" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- 4. RESUME MODAL -->
+  <dialog id="resumeModal" class="glass-modal">
+    <div class="modal-content modal-large">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-badge">Curriculum Vitae</span>
+          <h3 class="modal-title">Simon David — Resume</h3>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="download-resume-btn" id="downloadResumeBtn" onclick="downloadResume()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download PDF
+          </button>
+          <button type="button" class="modal-close-btn" data-close="resumeModal" aria-label="Close modal">&times;</button>
+        </div>
+      </div>
+
+      <div class="modal-body resume-preview-body">
+        <div class="resume-sheet">
+          <div class="resume-header">
+            <div>
+              <h2 class="resume-name">SIMON DAVID</h2>
+              <div class="resume-role-tag">Computer Scientist & Software Engineer</div>
+            </div>
+            <div class="resume-contact-meta">
+              <div>simondavid.cs@gmail.com</div>
+              <div>github.com/simondavid</div>
+              <div>linkedin.com/in/simondavid</div>
+            </div>
+          </div>
+
+          <div class="resume-section">
+            <h3 class="resume-sec-title">PROFESSIONAL SUMMARY</h3>
+            <p class="resume-text-p">
+              Results-driven Computer Scientist with strong foundation in computational algorithms, systems programming, and full-stack software development. Proven track record of architecting performant, scalable solutions with an emphasis on code quality, mathematical rigor, and engineering excellence.
+            </p>
+          </div>
+
+          <div class="resume-section">
+            <h3 class="resume-sec-title">EDUCATION</h3>
+            <div class="resume-entry">
+              <div class="entry-row">
+                <span class="entry-title">B.S. in Computer Science</span>
+                <span class="entry-date">2021 – 2025</span>
+              </div>
+              <p class="entry-desc">
+                Coursework: Advanced Data Structures, Operating Systems, Algorithm Analysis, Distributed Systems, Computer Networks, Database Architecture, Machine Learning.
+              </p>
+            </div>
+          </div>
+
+          <div class="resume-section">
+            <h3 class="resume-sec-title">TECHNICAL EXPERTISE</h3>
+            <div class="resume-skills-list">
+              <p><strong>Languages:</strong> Python, Java, C++, TypeScript, JavaScript, SQL, Go</p>
+              <p><strong>Frameworks & Tools:</strong> React, Node.js, Express, PyTorch, Docker, Git, Linux/Unix</p>
+              <p><strong>Core Competencies:</strong> Algorithmic Optimization, API Architecture, CI/CD, Distributed Systems</p>
+            </div>
+          </div>
+
+          <div class="resume-section">
+            <h3 class="resume-sec-title">KEY PROJECTS</h3>
+            <div class="resume-entry">
+              <div class="entry-row">
+                <span class="entry-title">Aether Task Mesh — Distributed Orchestration</span>
+                <span class="entry-date">2025</span>
+              </div>
+              <p class="entry-desc">Engineered distributed job broker with Raft replication, achieving 99.99% uptime and sub-15ms task scheduling latency.</p>
+            </div>
+            <div class="resume-entry">
+              <div class="entry-row">
+                <span class="entry-title">NeuralVision Core — Real-Time Inference Platform</span>
+                <span class="entry-date">2024 – 2025</span>
+              </div>
+              <p class="entry-desc">Implemented optimized computer vision pipeline utilizing GPU acceleration to process 60+ FPS concurrent camera streams.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="toast-notification" aria-live="polite"></div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

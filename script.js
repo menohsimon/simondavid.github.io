@@ -410,108 +410,52 @@ function initContactForm() {
     const msgInput = document.getElementById('contactMsg');
     const submitBtn = document.getElementById('submitFormBtn');
 
-    if (!nameInput.value || !emailInput.value || !msgInput.value) return;
+    if (!nameInput || !emailInput || !msgInput) return;
+    if (!nameInput.value.trim() || !emailInput.value.trim() || !msgInput.value.trim()) {
+      if (status) {
+        status.innerHTML = '<span style="color: #f87171; font-weight: 500;">Please fill out all fields.</span>';
+      }
+      return;
+    }
 
-    submitBtn.textContent = 'Sending...';
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const msg = msgInput.value.trim();
+
+    submitBtn.textContent = 'Opening Email Client...';
     submitBtn.disabled = true;
 
+    // Compose direct mailto link prefilled with sender's info & message
+    const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+    const body = encodeURIComponent(
+      `Hello Simon,\n\n${msg}\n\n---\nSender: ${name}\nEmail: ${email}`
+    );
+    const mailtoUrl = `mailto:menosimon6@gmail.com?subject=${subject}&body=${body}`;
+
+    // Trigger user's default email client
+    window.location.href = mailtoUrl;
+
+    if (status) {
+      status.innerHTML = '<span style="color: #4ade80; font-weight: 500;">✓ Launching your email client... You can also email directly at menosimon6@gmail.com.</span>';
+    }
+
     setTimeout(() => {
-      status.innerHTML = '<span style="color: #4ade80; font-weight: 500;">✓ Message sent! Simon will get back to you shortly at menosimon6@gmail.com.</span>';
-      submitBtn.textContent = 'Message Sent';
-
-      // Reset form fields
-      nameInput.value = '';
-      emailInput.value = '';
-      msgInput.value = '';
-
-      setTimeout(() => {
-        submitBtn.textContent = 'Send Message';
-        submitBtn.disabled = false;
-        status.innerHTML = '';
-      }, 4000);
-    }, 700);
+      submitBtn.textContent = 'Send Message Directly';
+      submitBtn.disabled = false;
+    }, 3500);
   };
 }
 
 /* ==========================================================================
-   7. RESUME DOWNLOAD ACTION
+   7. RESUME DOWNLOAD ACTION (OFFICIAL PDF)
    ========================================================================== */
 window.downloadResume = function () {
-  const resumeText = `
-MENOH SIMON DAVID
-Computer Science Graduate | Computer Engineer
-Email: menosimon6@gmail.com | Phone: 656-872-040 | Location: Yaoundé, CM
-LinkedIn: https://www.linkedin.com/in/simon-david-menoh-29662a308
-GitHub: https://github.com/menohsimon
+  const link = document.createElement('a');
+  link.href = 'Menoh_Simon_David_Resume.pdf';
+  link.download = 'Menoh_Simon_David_Resume.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 
-================================================================================
-SUMMARY
-================================================================================
-Computer Science graduate with practical experience in full-stack web development,
-database management, and software engineering. Passionate about Artificial Intelligence,
-Data Analytics, and building technology solutions that solve real-world problems.
-Quick learner, collaborative team member, and eager to contribute to innovative organizations.
-
-================================================================================
-SKILLS & COMPETENCIES
-================================================================================
-- Technical Stack: React, Python, Convex, JavaScript (ES6+), CSS3, HTML5, Tailwind CSS, Relational Databases, SQL, Git & GitHub
-- Professional Skills: Team Collaboration, Problem Solving, Communication, Time Management, Adaptability, Analytical Thinking
-- Additional Skills: Driving, Social Media Management, Graphic Design
-- Languages: English (Full Professional), French (Native or Bilingual)
-
-================================================================================
-ACCOMPLISHMENTS & EXPERIENCE
-================================================================================
-OLA ENERGY CAMEROON — Internship
-Duration: 14/07/2025 - 26/08/2025
-• Worked well in a team setting, providing support and guidance.
-• Passionate about learning and committed to continual improvement.
-• Participated in team projects, demonstrating an ability to work collaboratively and effectively.
-• Adaptable and proficient in learning new concepts quickly and efficiently.
-
-================================================================================
-FEATURED PROJECT
-================================================================================
-LogiTrack – Smart Logistics Marketplace & Real-Time Tracking
-The ICT University - Final Year Project Defense (04/07/2026)
-Live Demo: https://logitrack-rust.vercel.app/
-Source Code: https://github.com/menohsimon/logitrack
-• Developed a logistics platform connecting customers with transport providers.
-• Implemented real-time shipment tracking using interactive maps.
-• Built booking and company management features.
-• Designed relational databases for logistics operations.
-• Focused on improving transparency and logistics efficiency.
-
-================================================================================
-EDUCATION
-================================================================================
-THE ICT UNIVERSITY, Yaoundé
-Completed: July/2026
-• Completed coursework: Bachelor of Science in Computer Science
-
-THE ICT UNIVERSITY / COURSERA
-Duration: October/2024 - May/2025
-• Certificate in Database Management
-
-Douala Academy of Arts and Science, Douala
-Completed: September/2021
-• Completed Coursework: GCE ADVANCED LEVEL
-
-Fultang Bilingual School, Nkongsamba
-Completed: September/2019
-• Completed Coursework: GCE ORDINARY LEVEL
-`;
-
-  const blob = new Blob([resumeText], { type: 'text/plain;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'Menoh_Simon_David_Resume.txt';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-
-  showToast('Downloaded Menoh Simon David Resume!');
+  showToast('Downloading Menoh Simon David Official Resume (PDF)...');
 };

@@ -41,7 +41,7 @@
         </div>
 
         <nav class="nav-links" aria-label="Main Navigation">
-          <button type="button" class="nav-btn" id="navAboutBtn" data-modal="aboutModal">About Us</button>
+          <button type="button" class="nav-btn" id="navAboutBtn" data-modal="aboutModal">About Me</button>
           <button type="button" class="nav-btn" id="navProjectsBtn" data-modal="projectsModal">Projects</button>
           <button type="button" class="nav-btn" id="navContactBtn" data-modal="contactModal">Contact</button>
         </nav>
@@ -151,12 +151,12 @@
 
   <!-- ==================== INTERACTIVE MODALS ==================== -->
 
-  <!-- 1. ABOUT MODAL -->
+  <!-- 1. ABOUT ME MODAL (Academic & Professional Records) -->
   <dialog id="aboutModal" class="glass-modal">
     <div class="modal-content">
       <div class="modal-header">
         <div class="modal-title-group">
-          <span class="modal-badge">Professional Overview</span>
+          <span class="modal-badge">Professional & Academic Profile</span>
           <h3 class="modal-title">About Simon David Menoh</h3>
         </div>
         <button type="button" class="modal-close-btn" data-close="aboutModal" aria-label="Close modal">&times;</button>
@@ -170,6 +170,7 @@
           collaborative team member, and eager to contribute to innovative organizations.
         </p>
 
+        <!-- Technical & Soft Skills Matrix -->
         <div class="modal-grid">
           <div class="info-card">
             <h4>Technical Stack</h4>
@@ -199,16 +200,33 @@
           </div>
         </div>
 
+        <!-- Professional Experience & Accomplishments -->
+        <div class="education-block" style="margin-bottom: 20px;">
+          <h4>Professional Experience & Industry Credentials</h4>
+          <div class="edu-list">
+            <div class="edu-item">
+              <div class="edu-title">OLA ENERGY CAMEROON — Internship</div>
+              <div class="edu-sub">14/07/2025 – 26/08/2025 • Full-Time Technical Internship</div>
+              <p class="entry-sub-desc">Worked in team setting providing technical guidance, cross-functional collaboration, and enterprise system support.</p>
+            </div>
+            <div class="edu-item">
+              <div class="edu-title">Meta: Introduction to Databases</div>
+              <div class="edu-sub">Coursera Verified Certificate • Completed: 08 May 2024</div>
+            </div>
+            <div class="edu-item">
+              <div class="edu-title">Google: Foundations of Project Management</div>
+              <div class="edu-sub">Coursera Verified Certificate • Completed: 16 December 2025</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Academic Background -->
         <div class="education-block">
-          <h4>Academic Background</h4>
+          <h4>Academic Education</h4>
           <div class="edu-list">
             <div class="edu-item">
               <div class="edu-title">The ICT University, Yaoundé</div>
               <div class="edu-sub">Bachelor of Science in Computer Science — Completed: July 2026</div>
-            </div>
-            <div class="edu-item">
-              <div class="edu-title">The ICT University / Coursera</div>
-              <div class="edu-sub">Certificate in Database Management (October 2024 – May 2025)</div>
             </div>
             <div class="edu-item">
               <div class="edu-title">Douala Academy of Arts and Science, Douala</div>
@@ -222,10 +240,13 @@
         </div>
 
         <div class="languages-block">
-          <h4>Languages</h4>
+          <h4>Languages & Additional Capabilities</h4>
           <div class="lang-pills">
             <span class="lang-tag">English: Full Professional</span>
             <span class="lang-tag">French: Native or Bilingual</span>
+            <span class="lang-tag">Driving</span>
+            <span class="lang-tag">Social Media Management</span>
+            <span class="lang-tag">Graphic Design</span>
           </div>
         </div>
 
@@ -238,7 +259,7 @@
     <div class="modal-content modal-large">
       <div class="modal-header">
         <div class="modal-title-group">
-          <span class="modal-badge">Featured Capstone & Production Project</span>
+          <span class="modal-badge">Featured Production Platform</span>
           <h3 class="modal-title">Featured Project: LogiTrack</h3>
         </div>
         <button type="button" class="modal-close-btn" data-close="projectsModal"
@@ -248,8 +269,8 @@
       <div class="modal-body">
         <article class="flagship-project-card">
           <div class="flagship-badge-row">
-            <span class="flagship-pill">Final Year Project Defense</span>
-            <span class="project-year">Completed: July 2026</span>
+            <span class="flagship-pill">Final Year Project</span>
+            <span class="project-year">July 2026</span>
           </div>
 
           <h4 class="flagship-title">LogiTrack — Smart Logistics Marketplace & Real-Time Tracking</h4>
@@ -332,7 +353,7 @@
     </div>
   </dialog>
 
-  <!-- 3. CONTACT MODAL -->
+  <!-- 3. CONTACT MODAL (With Direct Calling & Real Email Dispatch) -->
   <dialog id="contactModal" class="glass-modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -350,33 +371,46 @@
           technology collaborations.
         </p>
 
-        <!-- Quick Copy Email Box -->
+        <!-- Quick Copy & Direct Mail Email Box -->
         <div class="email-copy-box">
           <div class="email-info">
             <span class="email-label">Direct Email</span>
             <span class="email-value" id="emailText">menosimon6@gmail.com</span>
           </div>
-          <button type="button" class="copy-email-btn" id="copyEmailBtn" aria-label="Copy email address to clipboard">
-            <span class="copy-text">Copy</span>
-            <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-            </svg>
-          </button>
+          <div class="email-btn-group">
+            <a href="mailto:menosimon6@gmail.com?subject=Inquiry%20from%20Portfolio" class="direct-email-btn" aria-label="Open in Email App">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>Email Me</span>
+            </a>
+            <button type="button" class="copy-email-btn" id="copyEmailBtn" aria-label="Copy email address to clipboard">
+              <span class="copy-text">Copy</span>
+              <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
+          </div>
         </div>
 
+        <!-- Phone (Direct Call on Mobile) & Location Cards -->
         <div class="contact-meta-cards">
-          <div class="meta-card">
-            <span class="meta-title">📞 Phone</span>
+          <a href="tel:+237656872040" class="meta-card clickable-meta" aria-label="Direct Phone Call">
+            <div class="meta-top">
+              <span class="meta-title">📞 Direct Call</span>
+              <span class="call-badge">Tap to Call</span>
+            </div>
             <span class="meta-desc">+237 656-872-040</span>
-          </div>
+          </a>
           <div class="meta-card">
             <span class="meta-title">📍 Location</span>
             <span class="meta-desc">Yaoundé, Cameroon</span>
           </div>
         </div>
 
-        <!-- Contact Form -->
+        <!-- Contact Form with Direct Dispatch -->
         <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); submitContactForm();">
           <div class="form-group">
             <label for="contactName">Your Name</label>
@@ -391,14 +425,14 @@
             <textarea id="contactMsg" rows="3" required
               placeholder="Hello Simon, I saw your portfolio and LogiTrack project..."></textarea>
           </div>
-          <button type="submit" class="submit-btn" id="submitFormBtn">Send Message</button>
+          <button type="submit" class="submit-btn" id="submitFormBtn">Send Message Directly</button>
           <div class="form-status" id="formStatus" aria-live="polite"></div>
         </form>
       </div>
     </div>
   </dialog>
 
-  <!-- 4. RESUME MODAL (Accurately Styled to Uploaded PDF) -->
+  <!-- 4. RESUME MODAL (With Certificates Images, Coursera Links & Direct PDF Download) -->
   <dialog id="resumeModal" class="glass-modal">
     <div class="modal-content modal-large">
       <div class="modal-header">
@@ -407,14 +441,15 @@
           <h3 class="modal-title">Menoh Simon David — Resume</h3>
         </div>
         <div class="modal-actions">
-          <button type="button" class="download-resume-btn" id="downloadResumeBtn" onclick="downloadResume()">
+          <!-- Direct PDF Download matching exact uploaded resume -->
+          <a href="Menoh_Simon_David_Resume.pdf" download="Menoh_Simon_David_Resume.pdf" class="download-resume-btn" id="downloadResumeBtn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
               <polyline points="7 10 12 15 17 10"></polyline>
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-            Download Text CV
-          </button>
+            Download Resume (PDF)
+          </a>
           <button type="button" class="modal-close-btn" data-close="resumeModal"
             aria-label="Close modal">&times;</button>
         </div>
@@ -430,11 +465,11 @@
               <div class="resume-role-tag">Computer Science Graduate & Computer Engineer</div>
             </div>
             <div class="resume-contact-meta">
-              <div>✉️ menosimon6@gmail.com</div>
-              <div>📞 656-872-040</div>
+              <div>✉️ <a href="mailto:menosimon6@gmail.com" style="color: inherit; text-decoration: none;">menosimon6@gmail.com</a></div>
+              <div>📞 <a href="tel:+237656872040" style="color: inherit; text-decoration: none;">656-872-040</a></div>
               <div>📍 Yaoundé, Cameroon</div>
-              <div>🔗 linkedin.com/in/simon-david-menoh-29662a308</div>
-              <div>💻 github.com/menohsimon</div>
+              <div>🔗 <a href="https://www.linkedin.com/in/simon-david-menoh-29662a308" target="_blank" rel="noopener noreferrer" style="color: #a78bfa;">LinkedIn Profile</a></div>
+              <div>💻 <a href="https://github.com/menohsimon" target="_blank" rel="noopener noreferrer" style="color: #a78bfa;">github.com/menohsimon</a></div>
             </div>
           </div>
 
@@ -462,9 +497,10 @@
             </div>
           </div>
 
-          <!-- Accomplishments / Internship -->
+          <!-- Accomplishments & Verified Certificates (With Visual Pictures & Coursera Verification) -->
           <div class="resume-section">
-            <h3 class="resume-sec-title">ACCOMPLISHMENTS & EXPERIENCE</h3>
+            <h3 class="resume-sec-title">ACCOMPLISHMENTS & VERIFIED CERTIFICATES</h3>
+            
             <div class="resume-entry">
               <div class="entry-row">
                 <span class="entry-title">OLA ENERGY CAMEROON — Internship</span>
@@ -473,11 +509,50 @@
               <ul class="resume-bullets">
                 <li>Worked well in a team setting, providing support and guidance.</li>
                 <li>Passionate about learning and committed to continual improvement.</li>
-                <li>Participated in team projects, demonstrating an ability to work collaboratively and effectively.
-                </li>
+                <li>Participated in team projects, demonstrating an ability to work collaboratively and effectively.</li>
                 <li>Adaptable and proficient in learning new concepts quickly and efficiently.</li>
               </ul>
             </div>
+
+            <!-- Verified Certificates Visual Showcase -->
+            <div class="certificates-showcase">
+              
+              <!-- Certificate 1: Meta -->
+              <div class="certificate-card">
+                <a href="https://coursera.org/share/d1e36bfa260bd8368230487d63f2f657" target="_blank" rel="noopener noreferrer" class="cert-thumb-link">
+                  <img src="cert-meta.jpg" alt="Meta Introduction to Databases Certificate — Precious Menoh" class="cert-img" loading="lazy">
+                  <span class="cert-hover-overlay">🔍 View Coursera Credential</span>
+                </a>
+                <div class="cert-info">
+                  <div class="cert-badge-tag">Meta Certified</div>
+                  <h4 class="cert-name">Introduction to Databases</h4>
+                  <p class="cert-date">Authorized by Meta • Completed: 08 May 2024</p>
+                  <a href="https://coursera.org/share/d1e36bfa260bd8368230487d63f2f657" target="_blank" rel="noopener noreferrer" class="view-cert-btn">
+                    <span>View Certificate</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Certificate 2: Google -->
+              <div class="certificate-card">
+                <a href="https://coursera.org/share/574b3d0bf09aa9884cfd0643c8cc726d" target="_blank" rel="noopener noreferrer" class="cert-thumb-link">
+                  <img src="cert-google.jpg" alt="Google Foundations of Project Management Certificate — Precious Menoh" class="cert-img" loading="lazy">
+                  <span class="cert-hover-overlay">🔍 View Coursera Credential</span>
+                </a>
+                <div class="cert-info">
+                  <div class="cert-badge-tag">Google Certified</div>
+                  <h4 class="cert-name">Foundations of Project Management</h4>
+                  <p class="cert-date">Authorized by Google • Completed: 16 December 2025</p>
+                  <a href="https://coursera.org/share/574b3d0bf09aa9884cfd0643c8cc726d" target="_blank" rel="noopener noreferrer" class="view-cert-btn">
+                    <span>View Certificate</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
           </div>
 
           <!-- Key Project -->
@@ -485,20 +560,19 @@
             <h3 class="resume-sec-title">KEY PROJECT</h3>
             <div class="resume-entry">
               <div class="entry-row">
-                <span class="entry-title">LogiTrack – Smart Logistics Marketplace & Real-Time Tracking</span>
-                <span class="entry-date">Final Year Defense: 04/07/2026</span>
+                <span class="entry-title">LogiTrack – Smart Logistics Marketplace</span>
+                <span class="entry-date">04/07/2026</span>
               </div>
-              <p class="entry-desc" style="color: #a78bfa; margin-bottom: 6px;">The ICT University — Final Year Project
-              </p>
+              <p class="entry-desc" style="color: #a78bfa; margin-bottom: 6px;">The ICT University — Final Year Project</p>
               <ul class="resume-bullets">
                 <li>Developed a logistics platform connecting customers with transport providers.</li>
                 <li>Implemented real-time shipment tracking using interactive maps.</li>
                 <li>Built booking and company management features.</li>
                 <li>Designed relational databases for logistics operations.</li>
                 <li>Focused on improving transparency and logistics efficiency.</li>
-                <li>Live Demo: <a href="https://logitrack-rust.vercel.app/" target="_blank"
+                <li>Live Demo: <a href="https://logitrack-rust.vercel.app/" target="_blank" rel="noopener noreferrer"
                     style="color: #c4b5fd;">logitrack-rust.vercel.app</a> | Repo: <a
-                    href="https://github.com/menohsimon/logitrack" target="_blank"
+                    href="https://github.com/menohsimon/logitrack" target="_blank" rel="noopener noreferrer"
                     style="color: #c4b5fd;">github.com/menohsimon/logitrack</a></li>
               </ul>
             </div>
@@ -514,14 +588,6 @@
                 <span class="entry-date">Completed: July 2026</span>
               </div>
               <p class="entry-desc">Completed Coursework: Bachelor of Science in Computer Science</p>
-            </div>
-
-            <div class="resume-entry">
-              <div class="entry-row">
-                <span class="entry-title">THE ICT UNIVERSITY / COURSERA</span>
-                <span class="entry-date">October 2024 – May 2025</span>
-              </div>
-              <p class="entry-desc">Certificate in Database Management</p>
             </div>
 
             <div class="resume-entry">

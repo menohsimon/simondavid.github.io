@@ -459,24 +459,21 @@
   <!-- 4. RESUME MODAL (With Certificates Images, Coursera Links & Direct PDF Download) -->
   <dialog id="resumeModal" class="glass-modal">
     <div class="modal-content modal-large">
-      <div class="modal-header">
+      <div class="modal-header resume-modal-header">
         <div class="modal-title-group">
           <span class="modal-badge">Official Curriculum Vitae</span>
           <h3 class="modal-title">Menoh Simon David — Resume</h3>
         </div>
-        <div class="modal-actions">
-          <!-- Direct PDF Download matching exact uploaded resume -->
-          <a href="Menoh_Simon_David_Resume.pdf" download="Menoh_Simon_David_Resume.pdf" class="download-resume-btn" id="downloadResumeBtn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            Download Resume (PDF)
-          </a>
-          <button type="button" class="modal-close-btn" data-close="resumeModal"
-            aria-label="Close modal">&times;</button>
-        </div>
+        <a href="Menoh_Simon_David_Resume.pdf" download="Menoh_Simon_David_Resume.pdf" class="download-resume-btn" id="downloadResumeBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download Resume (PDF)
+        </a>
+        <button type="button" class="modal-close-btn" data-close="resumeModal"
+          aria-label="Close modal">&times;</button>
       </div>
 
       <div class="modal-body resume-preview-body">

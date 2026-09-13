@@ -11,11 +11,12 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initPortraitCutout();
-  initMouseParallax();
+  initFullParallax();
   initAmbientParticles();
   initModals();
   initEmailCopy();
-  initContactForm();
+  initDynamicTypography();
+  initDynamicRoleTypewriter();
 });
 
 /* ==========================================================================
@@ -175,50 +176,44 @@ function initPortraitCutout() {
 }
 
 /* ==========================================================================
-   2. 3D PERSPECTIVE CARD TILT & PARALLAX
-   Subtle mouse movement response providing depth and tactile feedback.
+   2. FULL SCREEN PERSPECTIVE PARALLAX
+   Smooth interactive mouse tracking that floats portrait, halo, and ambient blooms.
    ========================================================================== */
-function initMouseParallax() {
-  const card = document.getElementById('portfolioCard');
-  const container = document.querySelector('.portfolio-container');
+function initFullParallax() {
   const halo = document.querySelector('.violet-halo');
   const cornerGlow = document.querySelector('.corner-glow');
   const portraitImg = document.getElementById('portraitImg');
-
-  if (!card || !container) return;
+  const heroLeft = document.querySelector('.hero-left');
+  const heroRight = document.querySelector('.hero-right');
 
   // Only enable on non-touch devices
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     let ticking = false;
 
-    container.addEventListener('mousemove', (e) => {
+    window.addEventListener('mousemove', (e) => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const rect = card.getBoundingClientRect();
-          const cardX = e.clientX - rect.left;
-          const cardY = e.clientY - rect.top;
+          const centerX = window.innerWidth / 2;
+          const centerY = window.innerHeight / 2;
 
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
+          const deltaX = (e.clientX - centerX) / centerX;
+          const deltaY = (e.clientY - centerY) / centerY;
 
-          const deltaX = (cardX - centerX) / centerX;
-          const deltaY = (cardY - centerY) / centerY;
-
-          // Subtle tilt angle
-          const rotateX = -deltaY * 3.5;
-          const rotateY = deltaX * 4.5;
-
-          card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
-          // Subtle shift for halo & spotlight
+          // Gentle ambient float for portrait, halo, and content
           if (halo) {
-            halo.style.transform = `translate(calc(-50% + ${deltaX * 12}px), calc(-10% + ${deltaY * 12}px)) scale(1.02)`;
+            halo.style.transform = `translate(calc(-50% + ${deltaX * 16}px), calc(-10% + ${deltaY * 14}px)) scale(${1 + Math.abs(deltaX) * 0.04})`;
           }
           if (cornerGlow) {
-            cornerGlow.style.transform = `translate(${deltaX * 16}px, ${deltaY * 16}px)`;
+            cornerGlow.style.transform = `translate(${deltaX * 22}px, ${deltaY * 18}px)`;
           }
           if (portraitImg) {
-            portraitImg.style.transform = `translate(${deltaX * 8}px, ${deltaY * 6}px)`;
+            portraitImg.style.transform = `translate(${deltaX * 10}px, ${deltaY * 8}px)`;
+          }
+          if (heroLeft) {
+            heroLeft.style.transform = `translate(${deltaX * 5}px, ${deltaY * 4}px)`;
+          }
+          if (heroRight) {
+            heroRight.style.transform = `translate(${deltaX * -5}px, ${deltaY * 4}px)`;
           }
 
           ticking = false;
@@ -227,17 +222,12 @@ function initMouseParallax() {
       }
     });
 
-    container.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
-      if (halo) {
-        halo.style.transform = 'translate(-50%, -10%) scale(1)';
-      }
-      if (cornerGlow) {
-        cornerGlow.style.transform = 'translate(0px, 0px)';
-      }
-      if (portraitImg) {
-        portraitImg.style.transform = 'translate(0px, 0px)';
-      }
+    window.addEventListener('mouseleave', () => {
+      if (halo) halo.style.transform = 'translate(-50%, -10%) scale(1)';
+      if (cornerGlow) cornerGlow.style.transform = 'translate(0px, 0px)';
+      if (portraitImg) portraitImg.style.transform = 'translate(0px, 0px)';
+      if (heroLeft) heroLeft.style.transform = 'translate(0px, 0px)';
+      if (heroRight) heroRight.style.transform = 'translate(0px, 0px)';
     });
   }
 }
@@ -400,50 +390,108 @@ function showToast(message) {
 }
 
 /* ==========================================================================
-   6. CONTACT FORM INTERACTION
+   6. DYNAMIC TYPOGRAPHY: CYBER DECRYPT & ASSEMBLY ANIMATION
+   Staggered decode effect that dynamically assembles "Simon" and "David"
+   letter-by-letter on entry and upon hover.
    ========================================================================== */
-function initContactForm() {
-  window.submitContactForm = function () {
-    const status = document.getElementById('formStatus');
-    const nameInput = document.getElementById('contactName');
-    const emailInput = document.getElementById('contactEmail');
-    const msgInput = document.getElementById('contactMsg');
-    const submitBtn = document.getElementById('submitFormBtn');
+function initDynamicTypography() {
+  const lines = document.querySelectorAll('.decrypt-line');
+  if (!lines.length) return;
 
-    if (!nameInput || !emailInput || !msgInput) return;
-    if (!nameInput.value.trim() || !emailInput.value.trim() || !msgInput.value.trim()) {
-      if (status) {
-        status.innerHTML = '<span style="color: #f87171; font-weight: 500;">Please fill out all fields.</span>';
-      }
-      return;
-    }
+  const glyphs = '01#*$%&~<>{}[]/?!@+=-XYZ';
 
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const msg = msgInput.value.trim();
-
-    submitBtn.textContent = 'Opening Email Client...';
-    submitBtn.disabled = true;
-
-    // Compose direct mailto link prefilled with sender's info & message
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
-    const body = encodeURIComponent(
-      `Hello Simon,\n\n${msg}\n\n---\nSender: ${name}\nEmail: ${email}`
-    );
-    const mailtoUrl = `mailto:menosimon6@gmail.com?subject=${subject}&body=${body}`;
-
-    // Trigger user's default email client
-    window.location.href = mailtoUrl;
-
-    if (status) {
-      status.innerHTML = '<span style="color: #4ade80; font-weight: 500;">✓ Launching your email client... You can also email directly at menosimon6@gmail.com.</span>';
-    }
-
+  function decryptElement(el, targetText, delay = 0) {
     setTimeout(() => {
-      submitBtn.textContent = 'Send Message Directly';
-      submitBtn.disabled = false;
-    }, 3500);
-  };
+      el.classList.add('decrypting');
+      let iteration = 0;
+      const totalSteps = targetText.length * 4;
+
+      const interval = setInterval(() => {
+        el.innerText = targetText
+          .split('')
+          .map((char, index) => {
+            if (char === ' ') return ' ';
+            if (index < iteration / 4) {
+              return targetText[index];
+            }
+            return glyphs[Math.floor(Math.random() * glyphs.length)];
+          })
+          .join('');
+
+        if (iteration >= totalSteps) {
+          clearInterval(interval);
+          el.innerText = targetText;
+          el.classList.remove('decrypting');
+        }
+        iteration += 1;
+      }, 35);
+    }, delay);
+  }
+
+  // Trigger on initial entrance with clean stagger
+  lines.forEach((line, index) => {
+    const text = line.getAttribute('data-value') || line.innerText.trim();
+    decryptElement(line, text, 250 + index * 280);
+
+    // Interactive re-trigger on hover
+    line.addEventListener('mouseenter', () => {
+      if (!line.classList.contains('decrypting')) {
+        decryptElement(line, text, 0);
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   7. DYNAMIC ROLE TYPEWRITER: LIVE ROTATING ROLES
+   Showcases frontend development skills by dynamically typing, pausing,
+   deleting, and cycling through Simon's core engineering specializations.
+   ========================================================================== */
+function initDynamicRoleTypewriter() {
+  const roleEl = document.getElementById('dynamicRole');
+  if (!roleEl) return;
+
+  const roles = [
+    'Computer Engineer',
+    'Full-Stack Developer',
+    'Database Architect',
+    'Systems Specialist'
+  ];
+
+  let currentRoleIdx = 0;
+  let charIdx = roles[0].length;
+  let isDeleting = false;
+  let typingSpeed = 85;
+
+  function typeStep() {
+    const currentRole = roles[currentRoleIdx];
+
+    if (isDeleting) {
+      charIdx--;
+      roleEl.textContent = currentRole.substring(0, charIdx);
+      typingSpeed = 45;
+    } else {
+      charIdx++;
+      roleEl.textContent = currentRole.substring(0, charIdx);
+      typingSpeed = 80;
+    }
+
+    if (!isDeleting && charIdx === currentRole.length) {
+      // Pause at full word so recruiters can read it comfortably
+      typingSpeed = 3000;
+      isDeleting = true;
+    } else if (isDeleting && charIdx === 0) {
+      // Word fully cleared, switch to next role
+      isDeleting = false;
+      currentRoleIdx = (currentRoleIdx + 1) % roles.length;
+      typingSpeed = 400;
+    }
+
+    setTimeout(typeStep, typingSpeed);
+  }
+
+  // Start rotation after initial entrance delay
+  setTimeout(typeStep, 2800);
 }
 
 /* ==========================================================================

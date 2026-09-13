@@ -50,23 +50,27 @@
       <!-- Main Hero Stage -->
       <section class="card-hero" aria-label="Introduction">
 
-        <!-- Left Column: Name & Greeting -->
+        <!-- Left Column: Name & Greeting with Dynamic Entrance -->
         <div class="hero-left">
           <div class="greeting-wrapper">
+            <span class="status-pill">
+              <span class="status-dot"></span>
+              <span class="status-text">Available for Opportunities</span>
+            </span>
             <span class="greeting-subtitle">Hello, I'm</span>
           </div>
-          <h1 class="hero-name">
-            <span class="name-line">Simon</span>
-            <span class="name-line">David</span>
+          <h1 class="hero-name" id="heroName" aria-label="Simon David">
+            <span class="name-line decrypt-line" data-value="Simon">Simon</span>
+            <span class="name-line decrypt-line" data-value="David">David</span>
           </h1>
           <div class="hero-tags">
-            <span class="tag-pill">Frontend</span>
-            <span class="tag-pill">Databases</span>
-            <span class="tag-pill">Systems</span>
+            <span class="tag-pill"><span class="tag-icon">⚡</span>Frontend</span>
+            <span class="tag-pill"><span class="tag-icon">🗄️</span>Databases</span>
+            <span class="tag-pill"><span class="tag-icon">⚙️</span>Systems</span>
           </div>
         </div>
 
-        <!-- Center Column: Simon's Portrait with Violet Halo -->
+        <!-- Center Column: Simon's Portrait with Radiant Violet Halo -->
         <div class="hero-center">
           <div class="portrait-stage" id="portraitStage">
             <!-- Radiant Violet Radial Glow Behind Portrait -->
@@ -81,13 +85,16 @@
           </div>
         </div>
 
-        <!-- Right Column: Creative Computer Engineer Title -->
+        <!-- Right Column: Creative Computer Engineer Title with Dynamic Morphing Role -->
         <div class="hero-right">
           <div class="role-wrapper">
-            <span class="role-prefix">Creative</span>
-            <h2 class="role-headline">
-              <span class="role-gradient">Computer</span>
-              <span class="role-white">Engineer</span>
+            <div class="role-prefix-row">
+              <span class="role-prefix">Creative</span>
+              <span class="role-sparkle">✦</span>
+            </div>
+            <h2 class="role-headline" id="roleHeadline" aria-label="Computer Engineer">
+              <span class="role-gradient dynamic-role" id="dynamicRole">Computer Engineer</span>
+              <span class="typing-cursor" aria-hidden="true">|</span>
             </h2>
             <p class="role-description">
               Engineering full-stack web applications, scalable database architectures, and real-world technology
@@ -367,67 +374,84 @@
 
       <div class="modal-body">
         <p class="modal-lead">
-          I am open to software engineering opportunities, full-stack web development projects, and innovative
-          technology collaborations.
+          I am actively seeking software engineering opportunities, full-stack web development projects, and innovative technical collaborations. Reach out to me directly:
         </p>
 
-        <!-- Quick Copy & Direct Mail Email Box -->
-        <div class="email-copy-box">
-          <div class="email-info">
-            <span class="email-label">Direct Email</span>
-            <span class="email-value" id="emailText">menosimon6@gmail.com</span>
-          </div>
-          <div class="email-btn-group">
-            <a href="mailto:menosimon6@gmail.com?subject=Inquiry%20from%20Portfolio" class="direct-email-btn" aria-label="Open in Email App">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              <span>Email Me</span>
-            </a>
-            <button type="button" class="copy-email-btn" id="copyEmailBtn" aria-label="Copy email address to clipboard">
-              <span class="copy-text">Copy</span>
-              <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Phone (Direct Call on Mobile) & Location Cards -->
-        <div class="contact-meta-cards">
-          <a href="tel:+237656872040" class="meta-card clickable-meta" aria-label="Direct Phone Call">
-            <div class="meta-top">
-              <span class="meta-title">📞 Direct Call</span>
-              <span class="call-badge">Tap to Call</span>
+        <!-- Direct Contact Cards: Email & Phone -->
+        <div class="contact-channels-container">
+          <!-- Direct Email Channel Card -->
+          <div class="contact-channel-card email-channel-card">
+            <div class="channel-top">
+              <div class="channel-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="channel-header-text">
+                <span class="channel-tag">DIRECT EMAIL</span>
+                <span class="channel-value" id="emailText">menosimon6@gmail.com</span>
+              </div>
             </div>
-            <span class="meta-desc">+237 656-872-040</span>
-          </a>
-          <div class="meta-card">
-            <span class="meta-title">📍 Location</span>
-            <span class="meta-desc">Yaoundé, Cameroon</span>
+            <div class="channel-actions-row">
+              <a href="mailto:menosimon6@gmail.com?subject=Inquiry%20from%20Portfolio" class="channel-primary-btn" id="directEmailBtn" aria-label="Open in Email App">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                <span>Email Me</span>
+              </a>
+              <button type="button" class="channel-secondary-btn" id="copyEmailBtn" aria-label="Copy email address to clipboard">
+                <span class="copy-text">Copy</span>
+                <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Direct Phone Channel Card -->
+          <div class="contact-channel-card phone-channel-card">
+            <div class="channel-top">
+              <div class="channel-icon-circle phone-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div class="channel-header-text">
+                <span class="channel-tag">DIRECT PHONE CALL</span>
+                <span class="channel-value">+237 656-872-040</span>
+              </div>
+            </div>
+            <div class="channel-actions-row">
+              <a href="tel:+237656872040" class="channel-primary-btn call-action-btn" aria-label="Call Simon Directly">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <span>Tap to Call (+237 656-872-040)</span>
+              </a>
+            </div>
           </div>
         </div>
 
-        <!-- Contact Form with Direct Dispatch -->
-        <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); submitContactForm();">
-          <div class="form-group">
-            <label for="contactName">Your Name</label>
-            <input type="text" id="contactName" required placeholder="John Doe">
-          </div>
-          <div class="form-group">
-            <label for="contactEmail">Your Email</label>
-            <input type="email" id="contactEmail" required placeholder="john@example.com">
-          </div>
-          <div class="form-group">
-            <label for="contactMsg">Message</label>
-            <textarea id="contactMsg" rows="3" required
-              placeholder="Hello Simon, I saw your portfolio and LogiTrack project..."></textarea>
-          </div>
-          <button type="submit" class="submit-btn" id="submitFormBtn">Send Message Directly</button>
-          <div class="form-status" id="formStatus" aria-live="polite"></div>
-        </form>
+        <!-- Social Connections Quick Row -->
+        <div class="contact-social-pills">
+          <a href="https://www.linkedin.com/in/simon-david-menoh-29662a308" target="_blank" rel="noopener noreferrer" class="contact-social-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+            <span>LinkedIn Profile ↗</span>
+          </a>
+          <a href="https://github.com/menohsimon" target="_blank" rel="noopener noreferrer" class="contact-social-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+            <span>GitHub Profile ↗</span>
+          </a>
+        </div>
       </div>
     </div>
   </dialog>
